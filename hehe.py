@@ -13,3 +13,5 @@ moves = []
 hanoi(disks, first, second, third, moves)
 for move in moves:
     print(move)
+with open('решение.txt', 'w', encoding='utf-8') as file:
+    file.writelines(moves)
