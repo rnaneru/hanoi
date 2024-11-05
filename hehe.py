@@ -1,13 +1,15 @@
-def hanoi(disks, first, second, third):
+def hanoi(disks, first, second, third, moves):
     if disks == 1:
-        moves.append ('передвинуть диск с {first} на {third}')
-
-disks = int(input())
-first = []
-second = []
-third = []
+        moves.append(f'передвинуть диск со стрержня {first} на {third}')
+    else:
+        hanoi(disks - 1, first, third, second, moves)
+        moves.append(f'передвинуть диск со стрержня {first} на {third}')
+        hanoi(disks - 1, second, first, third, moves)
+disks = int(input("Введите количество дисков: "))
+first = 'A'
+second = 'B'
+third = 'C'
 moves = []
-for i in range (disks):
-    first.append (i)
-    hanoi(disks, first, second, third)
-print (moves)
+hanoi(disks, first, second, third, moves)
+for move in moves:
+    print(move)
